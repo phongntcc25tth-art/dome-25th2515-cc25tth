@@ -1,0 +1,33 @@
+<?php
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Diện tích hình chữ nhật</title>
+    <style>
+        body { font-family: Arial; text-align: center; margin-top: 50px; }
+        form { background: #e6f7ff; padding: 20px; display: inline-block; border-radius: 8px; }
+        input { margin: 8px; padding: 5px; width: 150px; }
+        button { padding: 8px 20px; background: #4CAF50; color: white; border: none; border-radius: 4px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <form method="post" action="hinh_chu_nhat.php" name="formHCN">
+        <h2>DIỆN TÍCH HÌNH CHỮ NHẬT</h2>
+        <label>Chiều dài:</label>
+        <input type="number" name="dai" required value="<?php echo isset($_POST['dai']) ? $_POST['dai'] : ''; ?>"><br>
+        
+        <label>Chiều rộng:</label>
+        <input type="number" name="rong" required value="<?php echo isset($_POST['rong']) ? $_POST['rong'] : ''; ?>"><br>
+        
+        <label>Diện tích:</label>
+        <input type="number" name="dientich" readonly value="<?php 
+            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                echo $_POST['dai'] * $_POST['rong'];
+            }
+        ?>"><br><br>
+        
+        <button type="submit">Tính</button>
+    </form>
+</body>
+</html>
